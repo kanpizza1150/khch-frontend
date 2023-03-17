@@ -107,7 +107,8 @@ const MainTab = ({ setActiveMenu }) => {
                 จุดที่คาดว่า: <span className="font-normal">{response?.location || ""}</span>
               </h4>
               <h4 className="text-lg text-center">
-                ระยะห่่างจากสถานี: <span className="font-normal">{response?.distance || "0"} km</span>
+                ระยะห่่างจากสถานี:{" "}
+                <span className="font-normal">{(response?.distance / 1000).toLocaleString() || "0"} km</span>
               </h4>
             </div>
             <Row className="mt-3 w-full">
