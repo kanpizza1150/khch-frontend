@@ -24,9 +24,25 @@ const Login = () => {
         }
         message.success("ลงชื่อเข้าใช้สำเร็จ")
       } catch (e) {
+        form.setFields([
+          {
+            name: "username",
+            errors: [""],
+          },
+          {
+            name: "password",
+            errors: ["Username หรือ password ไม่ถูกต้อง"],
+          },
+        ])
         message.error("ลงชื่อเข้าใช้ไม่สำเร็จ")
       }
       setLoading(false)
+    }
+  }
+  const handleOnKeyDown = (e) => {
+    // กดปุ่ม Enter
+    if (e.keyCode === 13) {
+      handleSubmit()
     }
   }
   return (
@@ -50,7 +66,13 @@ const Login = () => {
                 message: "กรุณากรอก Username!",
               },
             ]}>
-            <Input placeholder="Username" size="large" prefix={<UserOutlined />} disabled={loading} />
+            <Input
+              placeholder="Username"
+              size="large"
+              prefix={<UserOutlined />}
+              disabled={loading}
+              onKeyDown={handleOnKeyDown}
+            />
           </Form.Item>
           <Form.Item
             name="password"
@@ -60,7 +82,13 @@ const Login = () => {
                 message: "กรุณากรอก Password!",
               },
             ]}>
-            <Input.Password placeholder="Password" size="large" prefix={<LockOutlined />} disabled={loading} />
+            <Input.Password
+              placeholder="Password"
+              size="large"
+              prefix={<LockOutlined />}
+              disabled={loading}
+              onKeyDown={handleOnKeyDown}
+            />
           </Form.Item>
         </Form>
         <Button onClick={handleSubmit} className="w-full mt-3" type="primary" loading={loading}>
