@@ -99,9 +99,6 @@ const MainTab = ({ setActiveMenu }) => {
         )}
         {response?.success && (
           <>
-            <Typography.Title level={2} className="text-center">
-              ค่าที่รับเข้ามา
-            </Typography.Title>
             <div className="my-4">
               <h4 className="text-lg text-center">
                 จุดที่คาดว่า: <span className="font-normal">{response?.location || ""}</span>
